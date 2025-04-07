@@ -1,5 +1,14 @@
 name: Events Demo 1
-on: ...
+on:
+  pull_request:
+    # you can specify activity types to excute on this event
+    # It can be specified with an array as:
+    # types: [opened, closed]
+    # It can also be specified as a list indentation below
+    types: 
+      - opened
+  # Adding another event
+  workflow_dispatch:
 jobs:
   deploy:
     runs-on: ubuntu-latest
