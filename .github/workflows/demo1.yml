@@ -7,8 +7,24 @@ on:
     # It can also be specified as a list indentation below
     types: 
       - opened
+      # We can also add pull request if its opened and targets one of the branches
+    branches:
+      - main
+      - 'dev-*' # dev-new dev-this-is-new
+      - 'feat/**' # feat/new  feat/new/button
   # Adding another event
   workflow_dispatch:
+  push:
+    # Use filters to control pushing to the main branch
+    branches:
+      - main
+      - 'dev-*' # dev-new dev-this-is-new
+      - 'feat/**' # feat/new  feat/new/button
+    # You can also filter based on file path
+    # paths-ignore can be used to specify where changes should not be made
+    paths-ignore:
+      - '.github/workflows/*'
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
